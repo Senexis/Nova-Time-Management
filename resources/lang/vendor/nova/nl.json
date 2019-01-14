@@ -409,6 +409,7 @@
     "nova.fields.email": "E-mailadres",
     "nova.fields.ended_at": "Geëindigd op",
     "nova.fields.hourly_rate": "Uurloon",
+    "nova.fields.language": "Taal",
     "nova.fields.location": "Locatie",
     "nova.fields.name": "Naam",
     "nova.fields.notes": "Notities",

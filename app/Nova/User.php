@@ -101,8 +101,14 @@ class User extends Resource
 
             BelongsToMany::make(__('nova.fields.roles'), 'roles', 'App\\Nova\\Role'),
 
+            Select::make(__('nova.fields.language'), 'language')
+                ->options(config('languages'))
+                ->rules('required', 'in:' . implode(',', array_keys(config('languages'))))
+                ->onlyOnForms(),
+
             Select::make(__('nova.fields.timezone'), 'timezone')
                 ->options(array_combine($timezones, $timezones))
+                ->rules('required', 'in:' . implode(',', $timezones))
                 ->onlyOnForms(),
 
             Boolean::make(__('nova.fields.option_decimal_time'), 'option_decimal_time')

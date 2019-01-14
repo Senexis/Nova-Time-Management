@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
 
             // User localization
             $table->string('timezone')->default('UTC');
-            $table->string('language')->default('en-US');
+            $table->string('language')->default('en');
 
             // User customization
             $table->boolean('option_decimal_time')->default(false);
