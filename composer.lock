@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "10adec5f95e39fa01907efd6d9448a3c",
+    "content-hash": "ed7b24e0b486f2770c73a6056ad0cba3",
     "packages": [
         {
             "name": "benjaminhirsch/nova-slug-field",
@@ -2351,6 +2351,40 @@
                 "uuid"
             ],
             "time": "2018-07-19T23:38:55+00:00"
+        },
+        {
+            "name": "senexis/timesheet-reports",
+            "version": "9999999-dev",
+            "dist": {
+                "type": "path",
+                "url": "./nova-components/TimesheetReports",
+                "reference": "9859248b50f5c3c84196b3685ae0c448c0829793",
+                "shasum": null
+            },
+            "require": {
+                "php": ">=7.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Senexis\\TimesheetReports\\ToolServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Senexis\\TimesheetReports\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "A Laravel Nova tool.",
+            "keywords": [
+                "laravel",
+                "nova"
+            ]
         },
         {
             "name": "senexis/tracked-timesheets",

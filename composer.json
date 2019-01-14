@@ -15,6 +15,10 @@
         {
             "type": "path",
             "url": "./nova-components/TrackedTimesheets"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/TimesheetReports"
         }
     ],
     "require": {
@@ -27,7 +31,8 @@
         "laravel/nova": "~1.0",
         "laravel/tinker": "^1.0",
         "silvanite/novatoolpermissions": "^1.0",
-        "senexis/tracked-timesheets": "*"
+        "senexis/tracked-timesheets": "*",
+        "senexis/timesheet-reports": "*"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",

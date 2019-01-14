@@ -451,5 +451,7 @@
     "nova.filters.timesheet_date_from": "Datum (vanaf)",
     "nova.filters.timesheet_date_to": "Datum (tot)",
 
-    "nova.tools.tracked_timesheets.navigation": "Aan de slag"
+    "nova.tools.tracked_timesheets.navigation": "Aan de slag",
+
+    "nova.tools.timesheet_reports.navigation": "Rapportages"
 }

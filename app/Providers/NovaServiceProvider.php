@@ -8,6 +8,7 @@ use Laravel\Nova\Cards\Help;
 use Laravel\Nova\Nova;
 use Laravel\Nova\NovaApplicationServiceProvider;
 use Senexis\TrackedTimesheets\TrackedTimesheets;
+use Senexis\TimesheetReports\TimesheetReports;
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
 {
@@ -69,6 +70,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     {
         return [
             new TrackedTimesheets,
+            new TimesheetReports,
         ];
     }
 

@@ -89,11 +89,9 @@ class Timesheet extends Resource
                     }
                 }),
 
-            BelongsTo::make(__('nova.fields.location'), 'location', 'App\\Nova\\Location')
-                ->searchable(),
+            BelongsTo::make(__('nova.fields.location'), 'location', 'App\\Nova\\Location'),
 
-            BelongsTo::make(__('nova.fields.task'), 'task', 'App\\Nova\\Task')
-                ->searchable(),
+            BelongsTo::make(__('nova.fields.task'), 'task', 'App\\Nova\\Task'),
 
             BelongsTo::make(__('nova.fields.project'), 'project', 'App\\Nova\\Project')
                 ->searchable(),
@@ -103,10 +101,12 @@ class Timesheet extends Resource
                 ->exceptOnForms(),
 
             DateTime::make(__('nova.fields.started_at'), 'started_at')
+                ->format('L LT')
                 ->rules('before:ended_at')
                 ->sortable(),
 
             DateTime::make(__('nova.fields.ended_at'), 'ended_at')
+                ->format('L LT')
                 ->rules('after:started_at')
                 ->sortable(),
 

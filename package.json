@@ -9,7 +9,9 @@
         "prod": "npm run production",
         "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
         "build-tracked-timesheets": "cd nova-components/TrackedTimesheets && npm run dev",
-        "build-tracked-timesheets-prod": "cd nova-components/TrackedTimesheets && npm run prod"
+        "build-tracked-timesheets-prod": "cd nova-components/TrackedTimesheets && npm run prod",
+        "build-timesheet-reports": "cd nova-components/TimesheetReports && npm run dev",
+        "build-timesheet-reports-prod": "cd nova-components/TimesheetReports && npm run prod"
     },
     "devDependencies": {
         "axios": "^0.18",
