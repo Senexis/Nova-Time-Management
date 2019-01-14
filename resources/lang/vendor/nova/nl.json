@@ -410,6 +410,7 @@
     "nova.fields.ended_at": "Geëindigd op",
     "nova.fields.hourly_rate": "Uurloon",
     "nova.fields.language": "Taal",
+    "nova.fields.language.help": "<strong>Opmerking:</strong> Ververs de pagina om de wijzigingen volledig door te voeren.",
     "nova.fields.location": "Locatie",
     "nova.fields.name": "Naam",
     "nova.fields.notes": "Notities",
@@ -424,6 +425,7 @@
     "nova.fields.time_worked.values.decimal": ":timeu",
     "nova.fields.time_worked.values.gmdate": "G\\u i\\m",
     "nova.fields.timezone": "Tijdzone",
+    "nova.fields.timezone.help": "<strong>Opmerking:</strong> Ververs de pagina om de wijzigingen volledig door te voeren.",
     "nova.fields.travel_rate": "Reiskosten",
     "nova.fields.user": "Gebruiker",
 

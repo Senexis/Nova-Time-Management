@@ -104,11 +104,13 @@ class User extends Resource
             Select::make(__('nova.fields.language'), 'language')
                 ->options(config('languages'))
                 ->rules('required', 'in:' . implode(',', array_keys(config('languages'))))
+                ->help(__('nova.fields.language.help'))
                 ->onlyOnForms(),
 
             Select::make(__('nova.fields.timezone'), 'timezone')
                 ->options(array_combine($timezones, $timezones))
                 ->rules('required', 'in:' . implode(',', $timezones))
+                ->help(__('nova.fields.timezone.help'))
                 ->onlyOnForms(),
 
             Boolean::make(__('nova.fields.option_decimal_time'), 'option_decimal_time')
