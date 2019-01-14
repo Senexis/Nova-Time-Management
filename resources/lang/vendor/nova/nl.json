@@ -411,6 +411,8 @@
     "nova.fields.started_at": "Begonnen op",
     "nova.fields.task": "Taak",
     "nova.fields.time_worked": "Tijd gewerkt",
+    "nova.fields.time_worked.values.decimal": ":timeu",
+    "nova.fields.time_worked.values.gmdate": "G\\u i\\m",
     "nova.fields.timezone": "Tijdzone",
     "nova.fields.travel_rate": "Reiskosten",
     "nova.fields.user": "Gebruiker",

@@ -3,13 +3,9 @@
 namespace App\Nova;
 
 use Auth;
-use Epartment\NovaDependencyContainer\HasDependencies;
-use Epartment\NovaDependencyContainer\NovaDependencyContainer;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
-use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\DateTime;
-use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Markdown;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
@@ -17,8 +13,6 @@ use Laravel\Nova\Panel;
 
 class Timesheet extends Resource
 {
-    use HasDependencies;
-
     /**
      * The model the resource corresponds to.
      *
@@ -95,70 +89,26 @@ class Timesheet extends Resource
                     }
                 }),
 
-            BelongsTo::make(__('nova.fields.location'), 'location', 'App\\Nova\\Location'),
+            BelongsTo::make(__('nova.fields.location'), 'location', 'App\\Nova\\Location')
+                ->searchable(),
 
-            BelongsTo::make(__('nova.fields.task'), 'task', 'App\\Nova\\Task'),
+            BelongsTo::make(__('nova.fields.task'), 'task', 'App\\Nova\\Task')
+                ->searchable(),
 
             BelongsTo::make(__('nova.fields.project'), 'project', 'App\\Nova\\Project')
                 ->searchable(),
 
-            Text::make(__('nova.fields.time_worked'), 'time_worked')
+            Text::make(__('nova.fields.time_worked'), 'time_worked', function () { return $this->getTimeWorkedText(); })
                 ->sortable()
-                ->displayUsing(function ($value) {
-                    if ($value != null) {
-                        if (Auth::user()->option_decimal_time) {
-                            return round(($value / 60) / 60, 2) . 'h';
-                        } else {
-                            return gmdate('G\h i\m', $value);
-                        }
-                    }
-    
-                    return null;
-                })
                 ->exceptOnForms(),
 
             DateTime::make(__('nova.fields.started_at'), 'started_at')
-                ->sortable()
-                ->exceptOnForms(),
-                
-            DateTime::make(__('nova.fields.ended_at'), 'ended_at')
-                ->sortable()
-                ->exceptOnForms(),
+                ->rules('before:ended_at')
+                ->sortable(),
 
-            // When the type is null, display this checkbox to either hide or show the conditional end date.
-            Boolean::make(__('nova.fields.automatic_tracking'), 'type')
-                ->trueValue('tracked')
-                ->falseValue('manual')
-                ->onlyOnForms()
-                ->canSee(function () {
-                    return $this->type == null;
-                }),
-
-            // When the type is null or manual, but not tracked, allow editing the start date.
-            DateTime::make(__('nova.fields.started_at'), 'started_at')
-                ->rules('required')
-                ->onlyOnForms()
-                ->canSee(function () {
-                    return $this->type == null || $this->type == 'manual';
-                }),
-
-            // When the type is null, display a logically hidden or displayed Vue-component containing the end date.
-            NovaDependencyContainer::make([
-                DateTime::make(__('nova.fields.ended_at'), 'ended_at')
-                    ->rules('after:started_at')
-                    ->onlyOnForms()
-                    ->canSee(function () {
-                        return $this->type == null;
-                    }),
-            ])->dependsOn('type', false),
-
-            // When the type is manual, but not null or tracked, display a static end date field.
             DateTime::make(__('nova.fields.ended_at'), 'ended_at')
                 ->rules('after:started_at')
-                ->onlyOnForms()
-                ->canSee(function () {
-                    return $this->type == 'manual';
-                }),
+                ->sortable(),
 
             Markdown::make(__('nova.fields.notes'), 'notes')
                 ->alwaysShow(),
@@ -253,5 +203,29 @@ class Timesheet extends Resource
         }
 
         return $query;
+    }
+
+    /**
+     * Get the value that should be displayed to represent the time worked attribute.
+     *
+     * @return string
+     */
+    function getTimeWorkedText() {
+        $value = $this->time_worked;
+
+        if ($value != null) {
+            if (Auth::user()->option_decimal_time) {
+                return __('nova.fields.time_worked.values.decimal', [
+                    'time' => round($value / 3600, 2)
+                ]);
+            } else {
+                return gmdate(
+                    __('nova.fields.time_worked.values.gmdate'),
+                    $value
+                );
+            }
+        }
+
+        return null;
     }
 }

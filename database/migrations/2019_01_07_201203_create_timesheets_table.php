@@ -32,7 +32,7 @@ class CreateTimesheetsTable extends Migration
             $table->datetime('started_at');
             $table->datetime('paused_at')->nullable();
 
-            $table->enum('type', ['manual', 'tracked'])->default('tracked');
+            $table->enum('type', ['manual', 'tracked'])->default('manual');
             $table->datetime('resumed_at')->nullable();
             $table->datetime('ended_at')->nullable();
 
