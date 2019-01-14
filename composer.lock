@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "2c57f24d905276ce7da7be919be13141",
+    "content-hash": "10adec5f95e39fa01907efd6d9448a3c",
     "packages": [
         {
             "name": "benjaminhirsch/nova-slug-field",
@@ -2351,6 +2351,40 @@
                 "uuid"
             ],
             "time": "2018-07-19T23:38:55+00:00"
+        },
+        {
+            "name": "senexis/tracked-timesheets",
+            "version": "9999999-dev",
+            "dist": {
+                "type": "path",
+                "url": "./nova-components/TrackedTimesheets",
+                "reference": "358270782482692e3272c5ba4ed79880df93f513",
+                "shasum": null
+            },
+            "require": {
+                "php": ">=7.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Senexis\\TrackedTimesheets\\ToolServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Senexis\\TrackedTimesheets\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "A Laravel Nova tool.",
+            "keywords": [
+                "laravel",
+                "nova"
+            ]
         },
         {
             "name": "silvanite/brandenburg",

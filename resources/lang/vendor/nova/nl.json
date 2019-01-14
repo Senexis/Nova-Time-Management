@@ -446,5 +446,7 @@
     "nova.filters.log_type.values.deleted": "Verwijdert",
     "nova.filters.log_type.values.updated": "Bijgewerkt",
     "nova.filters.timesheet_date_from": "Datum (vanaf)",
-    "nova.filters.timesheet_date_to": "Datum (tot)"
+    "nova.filters.timesheet_date_to": "Datum (tot)",
+
+    "nova.tools.tracked_timesheets.navigation": "Aan de slag"
 }

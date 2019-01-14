@@ -11,6 +11,10 @@
         {
             "type": "composer",
             "url": "https://nova.laravel.com"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/TrackedTimesheets"
         }
     ],
     "require": {
@@ -22,7 +26,8 @@
         "laravel/framework": "5.7.*",
         "laravel/nova": "~1.0",
         "laravel/tinker": "^1.0",
-        "silvanite/novatoolpermissions": "^1.0"
+        "silvanite/novatoolpermissions": "^1.0",
+        "senexis/tracked-timesheets": "*"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
