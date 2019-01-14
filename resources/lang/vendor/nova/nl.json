@@ -371,6 +371,8 @@
     "Trashed": "Verwijdert",
     "Yes": "Ja",
 
+    "nova.layout.footer_credit": "Made with Laravel Nova v:version",
+
     "nova.groups.admin": "Administratie",
     "nova.groups.other": "Overig",
 
