@@ -394,7 +394,6 @@
     "nova.fields.action.values.updates": "Updated :action_updates in :action_model with ID :action_id.",
     "nova.fields.address_from": "Adres (van)",
     "nova.fields.address_to": "Adres (naar)",
-    "nova.fields.automatic_tracking": "Automatisch bijhouden",
     "nova.fields.created_at": "Aangemaakt op",
     "nova.fields.distance": "Afstand",
     "nova.fields.email": "E-mailadres",
