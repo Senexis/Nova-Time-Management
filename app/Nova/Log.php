@@ -147,16 +147,16 @@ class Log extends Resource
     function getActionText() {
         if ($this->action_updates) {
             return __('nova.fields.action.values.updates', [
-                'action' => $this->action,
-                'action_model' => ucwords(str_replace('_', ' ', $this->action_model)),
-                'action_id' => $this->action_id,
-                'action_updates' => implode(', ', str_replace('_', ' ', json_decode($this->action_updates))),
+                'action' => __('nova.fields.action.values.actions.' . $this->action),
+                'model' => __('nova.fields.action.values.models.' . $this->action_model),
+                'id' => $this->action_id,
+                'updates' => $this->action_updates,
             ]);
         } else {
             return __('nova.fields.action.values.other', [
-                'action' => $this->action,
-                'action_model' => ucwords(str_replace('_', ' ', $this->action_model)),
-                'action_id' => $this->action_id,
+                'action' => __('nova.fields.action.values.actions.' . $this->action),
+                'model' => __('nova.fields.action.values.models.' . $this->action_model),
+                'id' => $this->action_id,
             ]);
         }
     }
