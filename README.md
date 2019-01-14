@@ -14,3 +14,4 @@ Thanks to the folks that created these plugins.
 - [caouecs/laravel-lang](https://github.com/caouecs/laravel-lang)
 - [coderello/laravel-nova-lang](https://github.com/coderello/laravel-nova-lang)
 - [epartment/nova-dependency-container](https://github.com/epartment/nova-dependency-container)
+- [silvanite/novatoolpermissions](https://github.com/silvanite/novatoolpermissions)

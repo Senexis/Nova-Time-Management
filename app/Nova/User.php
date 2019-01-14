@@ -4,6 +4,7 @@ namespace App\Nova;
 
 use Auth;
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Currency;
 use Laravel\Nova\Fields\DateTime;
@@ -97,6 +98,8 @@ class User extends Resource
                 ->onlyOnForms()
                 ->creationRules('required', 'string', 'min:6')
                 ->updateRules('nullable', 'string', 'min:6'),
+
+            BelongsToMany::make(__('nova.fields.roles'), 'roles', 'App\\Nova\\Role'),
 
             Select::make(__('nova.fields.timezone'), 'timezone')
                 ->options(array_combine($timezones, $timezones))
