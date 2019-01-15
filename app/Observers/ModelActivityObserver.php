@@ -34,8 +34,6 @@ class ModelActivityObserver
     public function updating($model)
     {
         $actionUpdates = $model->getDirty();
-        unset($actionUpdates['last_online_at']);
-        if (empty($actionUpdates)) return;
 
         if (Auth::check()) {
             Log::create([
