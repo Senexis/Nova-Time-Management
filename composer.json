@@ -14,11 +14,11 @@
         },
         {
             "type": "path",
-            "url": "./nova-components/TrackedTimesheets"
+            "url": "./nova-components/TimesheetReports"
         },
         {
             "type": "path",
-            "url": "./nova-components/TimesheetReports"
+            "url": "./nova-components/TimesheetTimerCard"
         }
     ],
     "require": {
@@ -31,8 +31,8 @@
         "laravel/nova": "~1.0",
         "laravel/tinker": "^1.0",
         "silvanite/novatoolpermissions": "^1.0",
-        "senexis/tracked-timesheets": "*",
-        "senexis/timesheet-reports": "*"
+        "senexis/timesheet-reports": "*",
+        "senexis/TimesheetTimerCard": "*"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",

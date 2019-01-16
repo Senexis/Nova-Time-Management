@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Gate;
 use Laravel\Nova\Cards\Help;
 use Laravel\Nova\Nova;
 use Laravel\Nova\NovaApplicationServiceProvider;
-use Senexis\TrackedTimesheets\TrackedTimesheets;
 use Senexis\TimesheetReports\TimesheetReports;
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
@@ -69,7 +68,6 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     public function tools()
     {
         return [
-            new TrackedTimesheets,
             new TimesheetReports,
         ];
     }

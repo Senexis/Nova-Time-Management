@@ -7,34 +7,44 @@ use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
-| Tool API Routes
+| Card API Routes
 |--------------------------------------------------------------------------
 |
-| Here is where you may register API routes for your tool. These routes
-| are loaded by the ServiceProvider of your tool. They are protected
-| by your tool's "Authorize" middleware by default. Now, go build!
+| Here is where you may register API routes for your card. These routes
+| are loaded by the ServiceProvider of your card. You're free to add
+| as many additional routes to this file as your card may require.
 |
 */
 
 Route::get('/latest-timer', function (Request $request) {
     $currentEntry = GetCurrentEntry();
 
-    return $currentEntry ?? "{}";
+    if ($currentEntry == null) return "{}";
+
+    if ($currentEntry->paused_at == null) {
+        $currentEntry->time_worked += Carbon::now()->diffInSeconds($currentEntry->resumed_at ?? $currentEntry->started_at);
+    }
+
+    return $currentEntry;
 });
 
 Route::get('/latest-timer/pause', function (Request $request) {
     $currentEntry = GetCurrentEntry();
+
+    if ($currentEntry == null) return "{}";
 
     if ($currentEntry->ended_at == null && $currentEntry->paused_at == null) {
         $currentEntry->paused_at = Carbon::now();
         $currentEntry->save();
     }
 
-    return $currentEntry ?? "{}";
+    return $currentEntry;
 });
 
 Route::get('/latest-timer/resume', function (Request $request) {
     $currentEntry = GetCurrentEntry();
+
+    if ($currentEntry == null) return "{}";
 
     if ($currentEntry->ended_at == null && $currentEntry->paused_at != null) {
         $currentEntry->resumed_at = Carbon::now();
@@ -42,11 +52,13 @@ Route::get('/latest-timer/resume', function (Request $request) {
         $currentEntry->save();
     }
 
-    return $currentEntry ?? "{}";
+    return $currentEntry;
 });
 
 Route::get('/latest-timer/stop', function (Request $request) {
     $currentEntry = GetCurrentEntry();
+
+    if ($currentEntry == null) return "{}";
 
     if ($currentEntry->ended_at == null && $currentEntry->paused_at != null) {
         $currentEntry->ended_at = $currentEntry->resumed_at ?? Carbon::now();
@@ -54,7 +66,7 @@ Route::get('/latest-timer/stop', function (Request $request) {
         $currentEntry->save();
     }
 
-    return $currentEntry ?? "{}";
+    return "{}";
 });
 
 function GetCurrentEntry() {

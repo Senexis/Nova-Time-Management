@@ -1,14 +1,13 @@
 <?php
 
-namespace Senexis\TrackedTimesheets;
+namespace Senexis\TimesheetTimerCard;
 
 use Laravel\Nova\Nova;
 use Laravel\Nova\Events\ServingNova;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
-use Senexis\TrackedTimesheets\Http\Middleware\Authorize;
 
-class ToolServiceProvider extends ServiceProvider
+class CardServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap any application services.
@@ -17,19 +16,18 @@ class ToolServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->loadViewsFrom(__DIR__.'/../resources/views', 'tracked-timesheets');
-
         $this->app->booted(function () {
             $this->routes();
         });
 
         Nova::serving(function (ServingNova $event) {
-            //
+            Nova::script('TimesheetTimerCard', __DIR__.'/../dist/js/card.js');
+            Nova::style('TimesheetTimerCard', __DIR__.'/../dist/css/card.css');
         });
     }
 
     /**
-     * Register the tool's routes.
+     * Register the card's routes.
      *
      * @return void
      */
@@ -39,8 +37,8 @@ class ToolServiceProvider extends ServiceProvider
             return;
         }
 
-        Route::middleware(['nova', Authorize::class])
-                ->prefix('nova-vendor/tracked-timesheets')
+        Route::middleware(['nova'])
+                ->prefix('nova-vendor/TimesheetTimerCard')
                 ->group(__DIR__.'/../routes/api.php');
     }
 

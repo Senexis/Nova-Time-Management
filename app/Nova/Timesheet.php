@@ -10,6 +10,7 @@ use Laravel\Nova\Fields\Markdown;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Panel;
+use Senexis\TimesheetTimerCard\TimesheetTimerCard;
 
 class Timesheet extends Resource
 {
@@ -123,7 +124,9 @@ class Timesheet extends Resource
      */
     public function cards(Request $request)
     {
-        return [];
+        return [
+            new TimesheetTimerCard,
+        ];
     }
 
     /**

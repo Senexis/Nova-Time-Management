@@ -1,6 +1,6 @@
 {
-    "name": "senexis/tracked-timesheets",
-    "description": "A Laravel Nova tool.",
+    "name": "senexis/TimesheetTimerCard",
+    "description": "A Laravel Nova card.",
     "keywords": [
         "laravel",
         "nova"
@@ -11,13 +11,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Senexis\\TrackedTimesheets\\": "src/"
+            "Senexis\\TimesheetTimerCard\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Senexis\\TrackedTimesheets\\ToolServiceProvider"
+                "Senexis\\TimesheetTimerCard\\CardServiceProvider"
             ]
         }
     },
