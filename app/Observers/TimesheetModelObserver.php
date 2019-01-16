@@ -37,11 +37,9 @@ class TimesheetModelObserver
 
         if ($model->type == 'tracked') {
             if ($model->ended_at == null && $model->paused_at != null) {
-                // Paused without prior resuming.
                 $model->time_worked += $model->paused_at->diffInSeconds($model->resumed_at ?? $model->started_at);
-            } else if ($model->ended_at != null && $model->paused_at == null) {
-                // Ended without prior pausing.
-                $model->time_worked += $model->ended_at->diffInSeconds($model->resumed_at ?? $model->started_at);
+            } else if ($model->ended_at != null && $model->paused_at == null && $model->resumed_at != null) {
+                $model->time_worked += $model->ended_at->diffInSeconds($model->resumed_at);
                 $model->resumed_at = null;
             }
         }
