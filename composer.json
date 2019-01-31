@@ -32,7 +32,7 @@
         "laravel/tinker": "^1.0",
         "silvanite/novatoolpermissions": "^1.0",
         "senexis/timesheet-reports": "*",
-        "senexis/TimesheetTimerCard": "*"
+        "senexis/timesheet-timer-card": "*"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",

@@ -1,5 +1,5 @@
 {
-    "name": "senexis/TimesheetTimerCard",
+    "name": "senexis/timesheet-timer-card",
     "description": "A Laravel Nova card.",
     "keywords": [
         "laravel",
